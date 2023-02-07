@@ -1,0 +1,10 @@
+.gallery-boardgames{
+    display: flex;
+    justify-content: center;
+    background-color: rgba(245, 245, 220, 0.623);
+    border-radius: 10px;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+}

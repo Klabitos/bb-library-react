@@ -1,0 +1,15 @@
+
+.cardItem{
+    max-width: 350px;
+    margin: 15px;
+}
+
+.gameText{
+    text-align: justify;
+}
+
+.badgeCard{
+    margin: 5px;
+    margin-bottom: -1px;
+    margin-top: 0px;
+}

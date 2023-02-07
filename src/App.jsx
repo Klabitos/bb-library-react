@@ -1,18 +1,8 @@
-import HomeComponent from './components/HomeComponent.jsx'
-import InitialInfoDefault from './components/InitialInfoDefault'
-import { ChakraProvider } from '@chakra-ui/react'
+import Home from './pages/Home/Home'
 import './App.css'
-
 function App() {
   return (
-    <ChakraProvider>
-
-      <div className="App">
-        <HomeComponent></HomeComponent>
-        <InitialInfoDefault></InitialInfoDefault>
-      </div>
-
-    </ChakraProvider>
+      <Home></Home>
   )
 }
 export default App

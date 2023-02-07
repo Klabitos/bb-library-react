@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import reactLogo from '../assets/react.svg'
-import { CircularProgress, CircularProgressLabel } from '@chakra-ui/react'
+import { CircularProgress } from '@chakra-ui/react'
 import '../App.css'
 
 export default function InitialInfoDefault() {
