@@ -1,0 +1,29 @@
+.headerMenu{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #F8F8E6;
+    padding: 20px;
+    border-bottom: 1px solid rgba(238, 238, 129, 0.795);
+    min-width: 100vw;
+    width: 100%;
+    z-index: 1;
+}
+
+.filterMenu{
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-right: 1px solid rgba(238, 238, 129, 0.795);
+    background-color: #F8F8E6;
+    min-height: 100vh;
+    height: 100%;
+    min-width: 15vw;
+    z-index: 2;
+}
+
+.mainContent{
+    margin-top: 50px;
+    margin-left: 15vw;
+}
+
