@@ -1,13 +1,14 @@
 import './Home.css'
 import GalleryBoardGameCard from '../../components/cards/GalleryBoardGameCard/GalleryBoardGameCard'
+import { Heading } from '@chakra-ui/react'
 
 export default function Home() {
 
     return (
         <div className='mainContainer'>
-            <h1>
-                ALL GAMES
-            </h1> 
+            <Heading as='h3' size='lg'>
+                All Games
+            </Heading>
             <GalleryBoardGameCard boardGamesList={allGamesData}></GalleryBoardGameCard>
         </div>
 
@@ -16,7 +17,7 @@ export default function Home() {
 
 const allGamesData = [
     {
-        name:'The Island',
+        name: 'The Island',
         imgLink: 'https://juegosdemesayrol.com/wp-content/uploads/The-Island-3.jpg',
         autor: 'Dan Smith',
         resume: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, velit facilis facere cumque laborum tempore dignissimos, impedit, dolor repudiandae laudantium distinctio architecto non? Dolorum eius maiores fugit accusamus harum perspiciatis!',
@@ -25,7 +26,7 @@ const allGamesData = [
         timeOfGame: '35min'
     },
     {
-        name:'The Island 2',
+        name: 'The Island 2',
         imgLink: 'https://juegosdemesayrol.com/wp-content/uploads/The-Island-3.jpg',
         autor: 'Dan Smith',
         resume: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, velit facilis facere cumque laborum tempore dignissimos, impedit, dolor repudiandae laudantium distinctio architecto non? Dolorum eius maiores fugit accusamus harum perspiciatis!',
@@ -34,7 +35,7 @@ const allGamesData = [
         timeOfGame: '35min'
     },
     {
-        name:'The Island 3',
+        name: 'The Island 3',
         imgLink: 'https://juegosdemesayrol.com/wp-content/uploads/The-Island-3.jpg',
         autor: 'Dan Smith',
         resume: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, velit facilis facere cumque laborum tempore dignissimos, impedit, dolor repudiandae laudantium distinctio architecto non? Dolorum eius maiores fugit accusamus harum perspiciatis!',
@@ -43,7 +44,7 @@ const allGamesData = [
         timeOfGame: '35min'
     },
     {
-        name:'The Island 4',
+        name: 'The Island 4',
         imgLink: 'https://juegosdemesayrol.com/wp-content/uploads/The-Island-3.jpg',
         autor: 'Dan Smith',
         resume: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, velit facilis facere cumque laborum tempore dignissimos, impedit, dolor repudiandae laudantium distinctio architecto non? Dolorum eius maiores fugit accusamus harum perspiciatis!',
@@ -52,7 +53,7 @@ const allGamesData = [
         timeOfGame: '35min'
     },
     {
-        name:'The Island 5',
+        name: 'The Island 5',
         imgLink: 'https://juegosdemesayrol.com/wp-content/uploads/The-Island-3.jpg',
         autor: 'Dan Smith',
         resume: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, velit facilis facere cumque laborum tempore dignissimos, impedit, dolor repudiandae laudantium distinctio architecto non? Dolorum eius maiores fugit accusamus harum perspiciatis!',
@@ -61,7 +62,7 @@ const allGamesData = [
         timeOfGame: '35min'
     },
     {
-        name:'The Island 6',
+        name: 'The Island 6',
         imgLink: 'https://juegosdemesayrol.com/wp-content/uploads/The-Island-3.jpg',
         autor: 'Dan Smith',
         resume: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, velit facilis facere cumque laborum tempore dignissimos, impedit, dolor repudiandae laudantium distinctio architecto non? Dolorum eius maiores fugit accusamus harum perspiciatis!',

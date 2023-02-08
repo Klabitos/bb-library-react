@@ -1,5 +1,11 @@
 
-.leftMenu{
+.leftMenu--whole{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 98vh;
+}
+.leftMenu--top{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -19,10 +25,6 @@
     margin: 2px;
 }
 
-.menuButton:last-of-type{
-    position: relative;
-    top: 25vh;
-}
 
 .horizontalLine{
     margin-top: 10px !important;

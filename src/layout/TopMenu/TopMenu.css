@@ -1,0 +1,15 @@
+.topMenu--whole{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.topMenu--whole *{
+    margin: 2px;
+}
+
+.menuButton--top{
+    width: 20vw !important;
+}
+
