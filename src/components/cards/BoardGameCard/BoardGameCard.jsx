@@ -19,9 +19,9 @@ export default function BoardGameCard({boardGame}) {
                     <p className='gameText'>{boardGame.resume}</p>
                 </CardBody>
                 <CardFooter>
-                    <Badge className='badgeCard'>{boardGame.ageLimit}</Badge>
-                    <Badge className='badgeCard'>{boardGame.playersLimit}</Badge>
-                    <Badge className='badgeCard'>{boardGame.timeOfGame}</Badge>
+                    <Badge className='badgeCard' colorScheme='green'>{boardGame.ageLimit}</Badge>
+                    <Badge className='badgeCard' colorScheme='blue'>{boardGame.playersLimit}</Badge>
+                    <Badge className='badgeCard' colorScheme='purple'>{boardGame.timeOfGame}</Badge>
                 </CardFooter>
             </Card>
         </div>

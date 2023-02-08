@@ -6,16 +6,15 @@ export default function Home() {
     return (
         <div className='mainContainer'>
             <h1>
-                HOME
+                ALL GAMES
             </h1> 
-            <p>asd</p>
-            <GalleryBoardGameCard boardGamesList={gamesData}></GalleryBoardGameCard>
+            <GalleryBoardGameCard boardGamesList={allGamesData}></GalleryBoardGameCard>
         </div>
 
     )
 }
 
-const gamesData = [
+const allGamesData = [
     {
         name:'The Island',
         imgLink: 'https://juegosdemesayrol.com/wp-content/uploads/The-Island-3.jpg',

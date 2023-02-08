@@ -8,6 +8,7 @@
     min-width: 100vw;
     width: 100%;
     z-index: 1;
+    text-align: center;
 }
 
 .filterMenu{
@@ -23,7 +24,7 @@
 }
 
 .mainContent{
-    margin-top: 50px;
-    margin-left: 15vw;
+    margin-top: 65px;
+    margin-left: 16vw;
 }
 
