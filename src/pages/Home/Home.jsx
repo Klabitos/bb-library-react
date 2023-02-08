@@ -6,8 +6,8 @@ export default function Home() {
 
     return (
         <div className='mainContainer'>
-            <Heading as='h3' size='lg'>
-                All Games
+            <Heading className='discover--title' as='h2' size='xl'>
+                Discover new games
             </Heading>
             <GalleryBoardGameCard boardGamesList={allGamesData}></GalleryBoardGameCard>
         </div>

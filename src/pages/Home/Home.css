@@ -5,3 +5,8 @@
     justify-content: center;
     margin-top: 10vh;
 }
+
+.discover--title{
+    text-align: center !important;
+    margin-top: 15px;
+}

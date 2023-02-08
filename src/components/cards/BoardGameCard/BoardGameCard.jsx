@@ -1,28 +1,37 @@
 import { Badge } from '@chakra-ui/react'
-import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
+import { Card, CardHeader, CardBody, Tag, Button } from '@chakra-ui/react'
 import { Image } from '@chakra-ui/react'
 import './BoardGameCard.css'
 
-export default function BoardGameCard({boardGame}) {
+export default function BoardGameCard({ boardGame }) {
     return (
         <div className='cardItem'>
             <Card>
-                <CardHeader>
+                <CardHeader className='headerCard clickable'>
                     <h2>
                         <strong>
                             {boardGame.name}
                         </strong>
                     </h2>
+                    <div className='gameCard--tagContainer'>
+                        <Tag className='gameTag'>Sample Tag</Tag>
+                        <Tag className='gameTag'>Sample Tag</Tag>
+                        <Tag className='gameTag'>Sample Tag</Tag>
+                        <Tag className='gameTag'>Sample Tag</Tag>
+                    </div>
                 </CardHeader>
-                <Image src={boardGame.imgLink} alt={boardGame.name} />
+                <Image className='clickable' src={boardGame.imgLink} alt={boardGame.name} />
                 <CardBody>
                     <p className='gameText'>{boardGame.resume}</p>
                 </CardBody>
-                <CardFooter>
+                <div className='badgeContainer'>
                     <Badge className='badgeCard' colorScheme='green'>{boardGame.ageLimit}</Badge>
                     <Badge className='badgeCard' colorScheme='blue'>{boardGame.playersLimit}</Badge>
                     <Badge className='badgeCard' colorScheme='purple'>{boardGame.timeOfGame}</Badge>
-                </CardFooter>
+                </div>
+                <Button className='cardFooter' colorScheme='yellow'>
+                    I've played this!
+                </Button>
             </Card>
         </div>
     )
