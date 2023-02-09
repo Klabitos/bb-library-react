@@ -7,6 +7,7 @@ export default function BoardGameCard({ boardGame }) {
     return (
         <div className='cardItem'>
             <Card>
+                <Image className='clickable' src={boardGame.imgLink} alt={boardGame.name} />
                 <CardHeader className='headerCard clickable'>
                     <h2>
                         <strong>
@@ -20,7 +21,6 @@ export default function BoardGameCard({ boardGame }) {
                         <Tag className='gameTag'>Sample Tag</Tag>
                     </div>
                 </CardHeader>
-                <Image className='clickable' src={boardGame.imgLink} alt={boardGame.name} />
                 <CardBody>
                     <p className='gameText'>{boardGame.resume}</p>
                 </CardBody>
