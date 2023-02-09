@@ -13,3 +13,8 @@
     width: 20vw !important;
 }
 
+.searchIcon{
+    position: relative;
+    top: -3px;
+}
+
