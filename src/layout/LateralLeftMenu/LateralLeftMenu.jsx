@@ -4,9 +4,12 @@ import { Image  } from '@chakra-ui/react'
 import AddNewBoardGame from '../../components/modals/AddNewBoardGame'
 import { useDisclosure } from '@chakra-ui/react'
 import './LateralLeftMenu.css'
+import { useState } from 'react'
 
 export default function LateralLeftMenu() {
-    const { isOpen, onOpen, onClose } = useDisclosure()
+
+    const [modalAddBoardgame, setModalAddBoardgame] = useState(false)
+
     return (
         <div className='leftMenu--whole'>
             <div className='leftMenu--top'>
@@ -16,7 +19,7 @@ export default function LateralLeftMenu() {
                 <Button colorScheme='green' className='menuButton'>
                     I PLAYED SOMETHING!
                 </Button>
-                <Button onClick={onOpen} colorScheme='purple' className='menuButton'>
+                <Button onClick={() => setModalAddBoardgame(true)} colorScheme='purple' className='menuButton'>
                     New Game to Database
                 </Button>
                 <hr className='horizontalLine' />
@@ -55,7 +58,7 @@ export default function LateralLeftMenu() {
             {/* MODALS */}
 
             
-        <AddNewBoardGame isOpen={isOpen} onClose={onClose}></AddNewBoardGame>
+        <AddNewBoardGame isOpen={modalAddBoardgame} onClose={() => setModalAddBoardgame(false)}></AddNewBoardGame>
 
 
         </div>

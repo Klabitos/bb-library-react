@@ -17,7 +17,7 @@ export default function TopMenu() {
             </div>
             <div>
                 <Button colorScheme='gray'> Settings</Button>
-                <Button colorScheme='twitter'> Klabitos Pablo</Button>
+                <Button colorScheme='twitter'> Pablo 'Klabitos' Cruz</Button>
             </div>
         </div>
     )
