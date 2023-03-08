@@ -7,7 +7,7 @@ export default function BoardGameCard({ boardGame }) {
     return (
         <div className='cardItem'>
             <Card>
-                <Image className='clickable' src={boardGame.imgLink} alt={boardGame.name} />
+                <Image className='clickable card-image' src={boardGame.imgLink} alt={boardGame.name} />
                 <CardHeader className='headerCard clickable'>
                     <h2>
                         <strong>
@@ -15,10 +15,7 @@ export default function BoardGameCard({ boardGame }) {
                         </strong>
                     </h2>
                     <div className='gameCard--tagContainer'>
-                        <Tag className='gameTag'>Sample Tag</Tag>
-                        <Tag className='gameTag'>Sample Tag</Tag>
-                        <Tag className='gameTag'>Sample Tag</Tag>
-                        <Tag className='gameTag'>Sample Tag</Tag>
+                        <Tag className='gameTag'>{boardGame.author}</Tag>
                     </div>
                 </CardHeader>
                 <CardBody>
