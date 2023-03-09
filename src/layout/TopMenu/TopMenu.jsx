@@ -14,7 +14,7 @@ export default function TopMenu() {
     return (
         <div className='topMenu--whole'>
             <div>
-                <Input className='inputSearch--bar' width='50vw' placeholder='Search for your game...' />
+                <Input className='inputSearch--bar' width='50vw' placeholder='Search for your game... (AUTOCOMPLETE)' />
                 <IconButton className='searchIcon'
                     colorScheme='blue'
                     icon={<SearchIcon />}

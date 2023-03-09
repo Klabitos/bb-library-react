@@ -19,37 +19,37 @@ export default function LateralLeftMenu() {
                     <Image className='fakeLogo' src='src\assets\img\logo.png' alt='Fake Logo' />
                 </div>
                 <Button onClick={() => setWipModal(true)} colorScheme='green' className='menuButton'>
-                    I PLAYED SOMETHING!
+                    I PLAYED SOMETHING! (MODAL CON AUTOCOMPLETE Y ADD)
                 </Button>
                 <Button onClick={() => setModalAddBoardgame(true)} colorScheme='purple' className='menuButton'>
                     New Game to Database
                 </Button>
                 <hr className='horizontalLine' />
                 <Button onClick={() => setWipModal(true)} colorScheme='yellow' className='menuButton'>
-                    Played last 7 days
+                    Played last 7 days (TABLA GENERICA TODO)
                 </Button>
                 <Button onClick={() => setWipModal(true)} colorScheme='yellow' className='menuButton'>
-                    Played last month
+                    Played last month (TABLA?)
                 </Button>
                 <Button onClick={() => setWipModal(true)} colorScheme='yellow' className='menuButton'>
-                    Played last year
+                    Played last year (TABLA?)
                 </Button>
                 <Button onClick={() => setWipModal(true)} colorScheme='yellow' className='menuButton'>
-                    Played all time
+                    Played ALL time (TABLA)
                 </Button>
                 <hr className='horizontalLine' />
                 <Button onClick={() => setWipModal(true)} colorScheme='orange' className='menuButton'>
-                    Most Played Overall
+                    Most Played Overall (TABLA DE TODOS)
                 </Button>
                 <Button onClick={() => setWipModal(true)} colorScheme='orange' className='menuButton'>
-                    Ranking
+                    Ranking (TABLA DE TODOS)
                 </Button>
                 <hr className='horizontalLine' />
                 <Button onClick={() => setWipModal(true)} colorScheme='telegram' className='menuButton'>
-                    All Database Games
+                    All Database Games (TABLA ORDER NAME)
                 </Button>
                 <Button onClick={() => setWipModal(true)} colorScheme='telegram' className='menuButton'>
-                    All Categories
+                    All Categories (CUADRADOS CON CATEGORIAS Y LUEGO TABLA)
                 </Button>
             </div>
 
