@@ -9,9 +9,9 @@ export default function BoardGameCard({ boardGame }) {
             <Card>
                 <Image className='clickable card-image' src={boardGame.imgLink} alt={boardGame.name} />
                 <div className='badgeContainer'>
-                    <Badge className='badgeCard' colorScheme='green'>{boardGame.ageLimit}</Badge>
-                    <Badge className='badgeCard' colorScheme='blue'>{boardGame.playersLimit}</Badge>
-                    <Badge className='badgeCard' colorScheme='purple'>{boardGame.timeOfGame}</Badge>
+                    <Badge className='badgeCard' colorScheme='green'>{boardGame.ageLimit[0]} - {boardGame.ageLimit[1]} años</Badge>
+                    <Badge className='badgeCard' colorScheme='blue'>{boardGame.playerLimit[0]} - {boardGame.playerLimit[1]} players</Badge>
+                    <Badge className='badgeCard' colorScheme='purple'>{boardGame.timeOfGame[0]} - {boardGame.timeOfGame[1]}min</Badge>
                 </div>
                 <CardHeader className='headerCard clickable'>
                     <h2 className='headerCard--title'>

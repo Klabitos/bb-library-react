@@ -1,6 +1,6 @@
 import './Home.css'
 import GalleryBoardGameCard from '../../components/cards/GalleryBoardGameCard/GalleryBoardGameCard'
-import { getAllBoardgames } from '../../services/boargames'
+import { getAllBoardgames } from '../../services/boardgames'
 import { Heading } from '@chakra-ui/react'
 import { useState } from 'react'
 

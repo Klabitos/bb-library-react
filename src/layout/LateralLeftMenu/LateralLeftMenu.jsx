@@ -2,6 +2,7 @@
 import { Button } from '@chakra-ui/react'
 import { Image  } from '@chakra-ui/react'
 import AddNewBoardGame from '../../components/modals/AddNewBoardGame'
+import PlayedSomething from '../../components/modals/PlayedSomething/PlayedSomething'
 import WIPModal from '../../components/modals/WIP/WIPModal'
 import './LateralLeftMenu.css'
 import { useState } from 'react'
@@ -9,6 +10,8 @@ import { useState } from 'react'
 export default function LateralLeftMenu() {
 
     const [modalAddBoardgame, setModalAddBoardgame] = useState(false)
+    const [modalPlayedSomething, setModalPlayedSomething] = useState(false)
+
     const [wipModal, setWipModal] = useState(false)
 
 
@@ -18,8 +21,8 @@ export default function LateralLeftMenu() {
                 <div>
                     <Image className='fakeLogo' src='src\assets\img\logo.png' alt='Fake Logo' />
                 </div>
-                <Button onClick={() => setWipModal(true)} colorScheme='green' className='menuButton'>
-                    I PLAYED SOMETHING! (MODAL CON AUTOCOMPLETE Y ADD)
+                <Button onClick={() => setModalPlayedSomething(true)} colorScheme='green' className='menuButton'>
+                    I played a Boardgame!
                 </Button>
                 <Button onClick={() => setModalAddBoardgame(true)} colorScheme='purple' className='menuButton'>
                     New Game to Database
@@ -61,6 +64,7 @@ export default function LateralLeftMenu() {
 
             
         <AddNewBoardGame isOpen={modalAddBoardgame} onClose={() => setModalAddBoardgame(false)}></AddNewBoardGame>
+        <PlayedSomething isOpen={modalPlayedSomething} onClose={() => setModalPlayedSomething(false)}></PlayedSomething>
         <WIPModal isOpen={wipModal} onClose={() => setWipModal(false)}></WIPModal>
 
 
