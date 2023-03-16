@@ -1,9 +1,6 @@
 import BoardGameCard from "../BoardGameCard/BoardGameCard"
 import './GalleryBoardGameCard.css'
 
-import PropTypes from 'prop-types'; // ES6
-import { Boardgame } from "../../../models/BoardgameModel"
-
 
 export default function GalleryBoardGameCard({boardGamesList}){
     return(
@@ -13,8 +10,4 @@ export default function GalleryBoardGameCard({boardGamesList}){
             }
         </div>
     )
-}
-
-GalleryBoardGameCard.propTypes = {
-    boardGamesList: PropTypes.arrayOf(Boardgame).isRequired
 }
