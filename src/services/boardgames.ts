@@ -69,5 +69,10 @@ const allGamesData:Array<Boardgame> = [
 
 
 export function getAllBoardgames():Array<Boardgame>{
-    return allGamesData
+    return allGamesData;
+}
+
+export function addNewBoardGame(newBoardGame:Boardgame){
+    allGamesData.push(newBoardGame)
+    return allGamesData;
 }

@@ -5,115 +5,216 @@ import {
     ModalHeader,
     ModalFooter,
     ModalBody,
-    ModalCloseButton, Button,
-    Textarea, InputGroup, Input, InputLeftAddon, InputRightAddon
+    Alert,
+    AlertIcon,
+    ModalCloseButton, Button, InputGroup, NumberInputField, InputLeftAddon, NumberInput, NumberInputStepper, NumberDecrementStepper, NumberIncrementStepper,
+    AlertTitle,
+    Textarea, Input, 
 } from '@chakra-ui/react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { addNewBoardGame, getAllBoardgames } from '../../services/boardgames'
 import './AddNewBoardGame.css'
 
+import { Boardgame } from '../../models/BoardgameModel'
 
-export default function AddNewBoardGame({isOpen, onClose}){
+
+export default function AddNewBoardGame({ isOpen, onClose }) {
+
+    useEffect( () => {
+        setErrorInInput(false);
+        emptyVariables();
+    }, []) //Only executed once, if we want more ew put here the value we have to watch
+    
+
 
     const [errorInInput, setErrorInInput] = useState(false)
-
-    function errorMessage(isThereAnError){
-        if(isThereAnError) return <h2 className='errorMessage'>Fill all the fields in order to finish</h2>
+    const [errorText, setErrorText] = useState('Fill all the fields')
+    function errorMessage(isThereAnError) {
+        if (isThereAnError) return (
+            <Alert status='error'>
+                <AlertIcon />
+                <AlertTitle>{errorText}</AlertTitle>
+            </Alert>
+        )
         return <></>
     }
 
     const [nameValue, setNameValue] = useState('')
+    const [authorValue, setAuthorValue] = useState('')
     const [textareaValue, setTextareaValue] = useState('')
-    const [ageLimitValue, setAgeLimitValue] = useState('')
-    const [playerLimitValue, setPlayerLimitValue] = useState('')
-    const [minutesLimit, setMinutesLimit] = useState('')
+    const [ageLimitValueFrom, setAgeLimitValueFrom] = useState(0)
+    const [ageLimitValueTo, setAgeLimitValueTo] = useState(0)
+    const [playerLimitValueFrom, setPlayerLimitValueFrom] = useState(0)
+    const [playerLimitValueTo, setPlayerLimitValueTo] = useState(0)
+    const [minutesLimitFrom, setMinutesLimitFrom] = useState(0)
+    const [minutesLimitTo, setMinutesLimitTo] = useState(0)
     const [pictureUrlValue, setPictureUrlValue] = useState('')
-    const [tagValues, setTagValues] = useState('')
-
-    function checkAreEmptyVariables(){
-        if(nameValue == '') return true;
-        if(textareaValue == '') return true;
-        if(ageLimitValue == '') return true;
-        if(playerLimitValue == '') return true;
-        if(minutesLimit == '') return true;
-        if(pictureUrlValue == '') return true;
-        if(tagValues == '') return true;
-
-        return false;
-    }
-
-    function emptyVariables(){
-        setErrorInInput(false)
-        setNameValue('')
-        setAgeLimitValue('')
-        setMinutesLimit('')
-        setPictureUrlValue('')
-        setTagValues('')
-        setPlayerLimitValue('')
-    }
-
-    function addCheckers(){
-        const error = checkAreEmptyVariables()
-        if(error){
+    function addBoardgame() {
+        const newBoardGame = new Boardgame(nameValue+ageLimitValueFrom+playerLimitValueFrom,nameValue, pictureUrlValue, authorValue, [ageLimitValueFrom, ageLimitValueTo], [playerLimitValueFrom, playerLimitValueTo], [minutesLimitFrom, minutesLimitTo])
+        if (isThereAnError()) {
             setErrorInInput(true)
-        }else{
-            //add method (quizás store de juegos de mesa?)
+        } else {
+            console.log(addNewBoardGame(newBoardGame))
             onClose()
+            setErrorInInput(false)
             emptyVariables()
         }
     }
+    
+    function isThereAnError(){
+        if (areVariablesEmpty())  return true;
+        if(!arePairValuesCorrect()){setErrorText('Check Age, players or duration. TO field cannot be greater than the min limit.'); return true} ;
+        if (doesTheGameExist()) {setErrorText('This game is already in our database!'); return true} ;
+        return false
+    }
+    function areVariablesEmpty() {
+        if (nameValue == '') return true;
+        if (authorValue == '') return true;
+        if (textareaValue == '') return true;
+        if (ageLimitValueFrom == 0) return true;
+        if (ageLimitValueTo == 0) return true;
+        if (playerLimitValueFrom == 0) return true;
+        if (playerLimitValueTo == 0) return true;
+        if (minutesLimitFrom == 0) return true;
+        if (minutesLimitTo == 0) return true;
+        if (pictureUrlValue == '') return true;
+
+        return false;
+    }
+    function arePairValuesCorrect(){
+        return playerLimitValueFrom<playerLimitValueTo && ageLimitValueFrom<ageLimitValueTo && minutesLimitFrom<minutesLimitTo
+    }
+    function doesTheGameExist(){
+        const allBoardgames = getAllBoardgames() //TODO
+        return allBoardgames.forEach(boargame => boargame.name==nameValue?true:false)
+    }
+
+    
+
+    function emptyVariables() {
+        setErrorInInput(false)
+        setAuthorValue('')
+        setTextareaValue('')
+        setNameValue('')
+        setAgeLimitValueFrom(0)
+        setAgeLimitValueTo(0)
+        setMinutesLimitFrom(0)
+        setMinutesLimitTo(0)
+        setPlayerLimitValueFrom(0)
+        setPlayerLimitValueTo(0)
+        setPictureUrlValue('')
+    }
+
+    function closeModalEffects(){
+        onClose();
+        setErrorInInput(false);
+        emptyVariables();
+    }
 
 
-    return(
+    return (
         <Modal isOpen={isOpen} onClose={onClose}>
-                <ModalOverlay />
-                <ModalContent>
-                    <ModalHeader>Add Boardgame to Database</ModalHeader>
-                    <ModalCloseButton />
-                    <ModalBody>
-                        <InputGroup className='inputGroup'>
-                            <InputLeftAddon children='Name' />
-                            <Input placeholder='Boardgame name' value={nameValue} onChange={e => setNameValue(e.target.value)} />
-                        </InputGroup>
-                        <InputGroup className='inputGroup'>
-                            <Textarea placeholder='Description' value={textareaValue} onChange={e => setTextareaValue(e.target.value)} />
-                        </InputGroup>
-                        <InputGroup className='inputGroup'>
+            <ModalOverlay />
+            <ModalContent>
+                <ModalHeader>Add Boardgame to Database</ModalHeader>
+                <ModalCloseButton />
+                <ModalBody>
+                    <InputGroup className='inputGroup'>
+                        <InputLeftAddon children='Name' />
+                        <Input placeholder='Boardgame name' value={nameValue} onChange={e => setNameValue(e.target.value)} />
+                    </InputGroup>
+                    <InputGroup className='inputGroup'>
+                        <InputLeftAddon children='Author' />
+                        <Input placeholder='Boardgame author' value={authorValue} onChange={e => setAuthorValue(e.target.value)} />
+                    </InputGroup>
+                    <InputGroup className='inputGroup'>
+                        <Textarea placeholder='Description' value={textareaValue} onChange={e => setTextareaValue(e.target.value)} />
+                    </InputGroup>
+                    <div className='input-group-number--to'>
+                        <InputGroup className='input-number'>
                             <InputLeftAddon children='Age Limit' />
-                            <Input placeholder='6+' value={ageLimitValue} onChange={e => setAgeLimitValue(e.target.value)} />
+                            <NumberInput min={0} value={ageLimitValueFrom} onChange={value => setAgeLimitValueFrom(value)}>
+                                <NumberInputField />
+                                <NumberInputStepper>
+                                    <NumberIncrementStepper />
+                                    <NumberDecrementStepper />
+                                </NumberInputStepper>
+                            </NumberInput>
+                            <NumberInput  />
                         </InputGroup>
-                        <InputGroup className='inputGroup'>
-                            <InputLeftAddon children='Player Limit' />
-                            <Input placeholder='2 - 4' value={playerLimitValue} onChange={e => setPlayerLimitValue(e.target.value)} />
+                        <InputGroup className='input-number'>
+                            <InputLeftAddon children='To' />
+                            <NumberInput max={99} min={1}  value={ageLimitValueTo} onChange={value => setAgeLimitValueTo(value)} >
+                                <NumberInputField />
+                                <NumberInputStepper>
+                                    <NumberIncrementStepper />
+                                    <NumberDecrementStepper />
+                                </NumberInputStepper>
+                            </NumberInput>
+                            <NumberInput/>
                         </InputGroup>
-                        <InputGroup className='inputGroup'>
-                            <InputLeftAddon children='Min Limit' />
-                            <Input placeholder='15 - 25min' value={minutesLimit} onChange={e => setMinutesLimit(e.target.value)} />
+                    </div>
+                    <div className='input-group-number--to'>
+                        <InputGroup className='input-number'>
+                            <InputLeftAddon children='Number Players' />
+                            <NumberInput max={10} min={0} value={playerLimitValueFrom} onChange={value => setPlayerLimitValueFrom(value)}>
+                                <NumberInputField />
+                                <NumberInputStepper>
+                                    <NumberIncrementStepper />
+                                    <NumberDecrementStepper />
+                                </NumberInputStepper>
+                            </NumberInput>
+                            <NumberInput  />
                         </InputGroup>
-                        <InputGroup className='inputGroup'>
-                            <InputLeftAddon children='Picture URL' />
-                            <Input placeholder='https://...' value={pictureUrlValue} onChange={e => setPictureUrlValue(e.target.value)}/>
+                        <InputGroup className='input-number'>
+                            <InputLeftAddon children='To' />
+                            <NumberInput max={10} min={0} value={playerLimitValueTo} onChange={value => setPlayerLimitValueTo(value)} >
+                                <NumberInputField />
+                                <NumberInputStepper>
+                                    <NumberIncrementStepper />
+                                    <NumberDecrementStepper />
+                                </NumberInputStepper>
+                            </NumberInput>
+                            <NumberInput />
                         </InputGroup>
-                        <InputGroup className='inputGroup'>
-                            <InputLeftAddon children='Tag' />
-                            <Input placeholder='Party' value={tagValues} onChange={e => setTagValues(e.target.value)}/>
-                            <InputRightAddon children={
-                                 <Button colorScheme='blue' size='xs'>
-                                 +
-                               </Button>
-                            } />
+                    </div>
+                    <div className='input-group-number--to'>
+                        <InputGroup className='input-number'>
+                            <InputLeftAddon children='Duration (min)' />
+                            <NumberInput min={0} value={minutesLimitFrom} onChange={value => setMinutesLimitFrom(value)}>
+                                <NumberInputField />
+                                <NumberInputStepper>
+                                    <NumberIncrementStepper />
+                                    <NumberDecrementStepper />
+                                </NumberInputStepper>
+                            </NumberInput>
+                            <NumberInput  />
                         </InputGroup>
-                        {errorMessage(errorInInput)}
-                    </ModalBody>
-                    <ModalFooter>
-                        <Button colorScheme='orange' mr={3} onClick={()=>{
-                            onClose();
-                            emptyVariables();
-                        }}>
-                            Close
-                        </Button>
-                        <Button colorScheme='twitter' onClick={addCheckers}>Add</Button>
-                    </ModalFooter>
-                </ModalContent>
-            </Modal>
+                        <InputGroup className='input-number'>
+                            <InputLeftAddon children='To' />
+                            <NumberInput min={0} value={minutesLimitTo} onChange={value => setMinutesLimitTo(value)}>
+                                <NumberInputField />
+                                <NumberInputStepper>
+                                    <NumberIncrementStepper />
+                                    <NumberDecrementStepper />
+                                </NumberInputStepper>
+                            </NumberInput>
+                            <NumberInput  />
+                        </InputGroup>
+                    </div>
+                    <InputGroup className='inputGroup'>
+                        <InputLeftAddon children='Picture URL' />
+                        <Input placeholder='https://...' value={pictureUrlValue} onChange={e => setPictureUrlValue(e.target.value)} />
+                    </InputGroup>
+                    {errorMessage(errorInInput)}
+                </ModalBody>
+                <ModalFooter>
+                    <Button colorScheme='orange' mr={3} onClick={() => closeModalEffects()}>
+                        Close
+                    </Button>
+                    <Button colorScheme='twitter' onClick={() => addBoardgame()}>Add</Button>
+                </ModalFooter>
+            </ModalContent>
+        </Modal>
     )
 }

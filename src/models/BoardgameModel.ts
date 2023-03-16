@@ -1,5 +1,5 @@
 export class Boardgame{
-    id: number;
+    id?: number;
     name: string;
     imgLink: string;
     author: string;

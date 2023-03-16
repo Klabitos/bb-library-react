@@ -30,8 +30,7 @@ export default function PlayedSomething({ isOpen, onClose }) {
 
     function checkFormFields(){
         const playedInfo = new PlayedInfo(boardgameID, 0, 0, rate)
-        console.log(playedInfo)
-        console.log(addPlayedInfo(playedInfo))
+        addPlayedInfo(playedInfo)
         onClose()
     }
 
@@ -50,14 +49,14 @@ export default function PlayedSomething({ isOpen, onClose }) {
                     </InputGroup>
                     <InputGroup className='inputGroup'>
                         <InputLeftAddon children='Rate' />
-                        <NumberInput defaultValue={5} max={10} min={0}>
+                        <NumberInput defaultValue={5} max={10} min={0} value={rate} onChange={value => setRate(value)}>
                             <NumberInputField />
                             <NumberInputStepper>
                                 <NumberIncrementStepper />
                                 <NumberDecrementStepper />
                             </NumberInputStepper>
                         </NumberInput>
-                        <NumberInput placeholder='Boardgame Rate' value={rate} onChange={e => setRate(e.target.value)} />
+                        <NumberInput placeholder='Boardgame Rate'  />
                     </InputGroup>
                 </ModalBody>
                 <ModalFooter>
